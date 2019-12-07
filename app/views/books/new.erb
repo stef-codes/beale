@@ -1,16 +1,6 @@
 <h2>Add a New Book</h2>
 
 <form method="POST" action ="/books">
-  <label>Who are you?</label>
-  <select name="user_id">
-    <% @users.each do |user| %>
-        
-    <option value="<%= user.id%>"><%= user.first_name %> <%= user.last_name %> </option>
-
-    <%end%>
-  </select>
-
-  <br>  <br>
 
   <label> Title:</label>
   <input type="text" name="title">

@@ -12,18 +12,15 @@ class BooksController < ApplicationController
     
 
     get '/books/new' do 
-        @users = User.all
         erb :'books/new'
     end
 
     post '/books' do
         user = User.find_by(id: params[:user_id])
-        book = user.books.build(params) 
-        if book.save
-            erb :'books/show'
-        else
-            redirect "/books/new"
-        end 
+        book = user.books.build(params)
+
+        redirect '/books'
+       
     end 
 
 
