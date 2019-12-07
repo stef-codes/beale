@@ -1,0 +1,2 @@
+SessionsController < ApplicationController
+end 
