@@ -1,9 +1,13 @@
 class BooksController < ApplicationController
 
     get '/books' do 
-        binding.pry
-        @books = Book.all 
-        erb :'books/index'
+        if logged_in?
+            @user = current_user
+            @books = @user.books
+            erb :'books/index'
+        else 
+            redirect '/login' #must be loggedin to visit books page
+        end 
     end
     
 
@@ -16,7 +20,7 @@ class BooksController < ApplicationController
         user = User.find_by(id: params[:user_id])
         book = user.books.build(params) 
         if book.save
-            redirect "/books"
+            erb :'books/show'
         else
             redirect "/books/new"
         end 
@@ -33,23 +37,32 @@ class BooksController < ApplicationController
     end
     
     get '/books/:id/edit' do 
-        @users = User.all
-        @book = Book.find_by(id: params[:id])
-        erb :'books/edit'
+        user = Book.find_by(id: params[:id]).user
+        if user.id == current_user
+            @book = user.books.find_by(id: params[:id])
+            erb :'books/edit'
+        else 
+            redirect '/books'
+        end  
     end
     
     patch '/books/:id' do 
-        @book = Book.find_by(id: params[:id]) 
-        if @book.update(title: params[:title], author: params[:author], genre: params[:genre])
-            redirect "/books/#{@book.id}"
+        user = Book.find_by(id: params[:id]).user
+        if user.id == current_user
+            @book = user.books.find_by(id: params[:id]) 
+            if @book.update(title: params[:title], author: params[:author], genre: params[:genre])
+                redirect "/books/#{@book.id}"
+            else 
+                redirect "/books/#{@book.id}/edit"
+            end
         else 
-            redirect "/books/#{@book.id}/edit"
-        end
+            redirect '/books'
+        end 
     end
     
     delete '/books/:id' do 
         @book = Book.find_by(id: params[:id]) 
         @book.delete 
-        redirect "/books"
+        redirect '/books'
     end 
 end 
