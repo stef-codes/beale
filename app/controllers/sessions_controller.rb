@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
             session["user_id"] = user.id
             redirect '/books/new'
         else 
-            redirect '/login'
+            redirect '/signup'
         end 
 
     end

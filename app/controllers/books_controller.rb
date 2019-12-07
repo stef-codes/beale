@@ -12,7 +12,11 @@ class BooksController < ApplicationController
     
 
     get '/books/new' do 
-        erb :'books/new'
+        if logged_in?
+            erb :'books/new'
+        else 
+            redirect '/books'
+        end 
     end
 
     post '/books' do
