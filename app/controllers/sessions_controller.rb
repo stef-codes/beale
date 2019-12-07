@@ -5,15 +5,16 @@ class SessionsController < ApplicationController
     end
     
     post '/login' do 
-        user = User.find_by(email: params[:email])
+        # user = User.find_by(email: params[:email])
 
-        if user && user.authenticate(params[:password])
-            session["user_id"] = user.id
-            redirect '/books/new'
-        else 
-            redirect '/signup'
-        end 
-
+        # if user && user.authenticate(params[:password])
+        #     session["user_id"] = user.id
+        #     redirect '/books'
+        # else 
+        #     redirect '/signup'
+        #     # puts "Didn't work"
+        # end 
+        params.to_s
     end
     
     get '/logout' do 
