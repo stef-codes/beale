@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
+
     get '/books' do 
+        binding.pry
         @books = Book.all 
         erb :'books/index'
     end
@@ -43,5 +45,11 @@ class BooksController < ApplicationController
         else 
             redirect "/books/#{@book.id}/edit"
         end
+    end
+    
+    delete '/books/:id' do 
+        @book = Book.find_by(id: params[:id]) 
+        @book.delete 
+        redirect "/books"
     end 
 end 
