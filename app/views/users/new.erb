@@ -16,6 +16,19 @@
   <label>Email:</label>
   <input id="email" type="text" name="email">
 
+  <%# Show errors from validations %>
+ <%# <% if @user.errors.any? %>
+  <%# <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") does not contain valid user information</h2>
+ 
+    <%# <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <%# <li><%= msg</li>  %>  
+    <%# <% end %> 
+    <%# </ul> 
+  </div>  %>
+<%# <% end %>  
+
   <br/> <br/>
 
   <label>Password:</label>
