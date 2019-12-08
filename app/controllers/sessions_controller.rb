@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
             redirect '/books'
         else 
             redirect '/signup'
-            # puts "Didn't work"
         end 
 
     end
