@@ -32,6 +32,11 @@
     opacity: 0.9;
   }
 
+  .baldwin-img {
+    max-width: 50%;
+    height: auto;
+  }
+
   h1 {
     font-size: 36px;
     line-height: 54px;
