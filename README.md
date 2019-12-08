@@ -1,1 +1,1 @@
-Store books from African American Authors
+Store your favorite books
