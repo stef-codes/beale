@@ -71,7 +71,8 @@
     background: #eee;
     border: 1px solid #ccc;
     float: right;
-    padding: 2.08333333333%; /* 5px / 240px */
+    /* padding: 2.08333333333%; 5px / 240px */
+    padding: 5%; /* 5px / 240px */
     width: 30%; /* 240px / 800px */
   }
 
@@ -150,5 +151,27 @@
   
   .active {
     background-color: #4CAF50;
+  }
+  
+  .topnav {
+    background-color: #333;
+    overflow: hidden;
+  }
+
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
   }
 }
