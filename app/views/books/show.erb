@@ -5,7 +5,9 @@
 
 <br><br>
 
-<button type="button" class="btn btn-default"><a href="/books/<%= @book.id%>/edit">Edit Book</a></button>
+<a href="/books/<%= @book.id%>/edit"><input type="button" name="edit" value="Edit"></a>
+
+<br>
 
 <form method = "POST" action="/books/<%= @book.id%>">
 <input type="hidden" id="hidden" name="_method" value="DELETE">
