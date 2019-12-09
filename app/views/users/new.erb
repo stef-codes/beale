@@ -1,45 +1,19 @@
 <h1>Sign Up </h1>
-
 <br/> 
-
 <form method="POST" action="/signup">
-
   <label>First Name:</label>
   <input id="first_name" type="text" name="first_name">
-
-   <br/> <br/>
+  <br/> <br/>
   <label>Last Name:</label>
   <input id="last_name" type="text" name="last_name">
-
-   <br/> <br/>
-
+  <br/> <br/>
   <label>Email:</label>
   <input id="email" type="text" name="email">
-
-  <%# Show errors from validations %>
- <%# <% if @user.errors.any? %>
-  <%# <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") does not contain valid user information</h2>
- 
-    <%# <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <%# <li><%= msg</li>  %>  
-    <%# <% end %> 
-    <%# </ul> 
-  </div>  %>
-<%# <% end %>  
-
   <br/> <br/>
-
   <label>Password:</label>
   <input id="password" type="password" name="password">
-
   <br/>
-
   <br/>
-
   <input id="signup" type="submit" value="signup">
-
   <br/>
-
 </form>
