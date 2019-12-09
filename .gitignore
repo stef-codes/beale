@@ -4,6 +4,7 @@
 *.swp
 *.rbc
 *.sass-cache
+*.code-workspace
 /pkg
 /Gemfile.lock
 /coverage
