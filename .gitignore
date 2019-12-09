@@ -5,6 +5,7 @@
 *.rbc
 *.sass-cache
 *.code-workspace
+*.sqlite
 /pkg
 /Gemfile.lock
 /coverage
