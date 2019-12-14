@@ -6,9 +6,10 @@ To see this application clone this Github repository to your local environment. 
 
 ## Installation
 
-Install the required gems and run this application using the following commands:
+Install the required gems and migrate the database connections to run this application using the following commands:
 
-`bundle install`
+1.`bundle install`
+2.`rake db:migrate`
 
 
 And then execute:
