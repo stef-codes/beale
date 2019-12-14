@@ -2,11 +2,9 @@ class BooksController < ApplicationController
   get '/books' do 
     if logged_in?
       user = current_user
-      # @user = User.all 
       @books = user.books
       erb :'books/index'
     else 
-      # must be loggedin to visit books page
       redirect '/login' 
     end 
   end
