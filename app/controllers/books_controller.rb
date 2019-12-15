@@ -30,23 +30,31 @@ class BooksController < ApplicationController
   end 
 
 
-  get '/books/:id' do 
-    @book = Book.find_by(id: params[:id])
-    if @book
-      erb :'books/show'
+  get '/books/:id' do
+    if logged_in?
+        @book = current_user.books.find_by(id: params[:id])
+        if @book
+            erb :'books/show'
+        else 
+            redirect '/books'
+        end
     else 
-      redirect '/books'
-    end 
-  end
-
-  get '/books/:id/edit' do 
-    if current_user
-      @book = current_user.books.find_by(id: params[:id])
-      erb :'books/edit'
-    else 
-      redirect '/books'
+        redirect '/login' 
     end  
-  end
+end
+
+get '/books/:id/edit' do 
+  if current_user
+      @book = current_user.books.find_by(id: params[:id])
+      if @book
+          erb :'books/edit'
+      else 
+          redirect '/books'
+      end
+  else 
+      redirect '/books'
+  end  
+end
 
   patch '/books/:id' do 
     if current_user
