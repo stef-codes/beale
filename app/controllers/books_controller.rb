@@ -4,11 +4,9 @@ class BooksController < ApplicationController
     get '/books' do 
           if logged_in?
              user = current_user
-            # @user = User.all 
               @books = user.books
             erb :'books/index'
           else 
-            # must be loggedin to visit books page
              redirect '/login' 
           end 
     end
@@ -26,7 +24,7 @@ class BooksController < ApplicationController
         user = current_user
         @book = user.books.find_or_create_by(params)
 
-        if @book.save
+        if @book
             erb :'books/show'
         else 
             redirect '/books'
@@ -34,19 +32,28 @@ class BooksController < ApplicationController
     end 
 
 
-    get '/books/:id' do 
-        @book = Book.find_by(id: params[:id])
-        if @book
-            erb :'books/show'
+    get '/books/:id' do
+        if logged_in?
+            user = current_user
+            @book = current_user.books.find_by(id: params[:id])
+            if @book
+                erb :'books/show'
+            else 
+                redirect '/books'
+            end
         else 
-            redirect '/books'
-        end 
+            redirect '/login' 
+        end  
     end
     
     get '/books/:id/edit' do 
         if current_user
             @book = current_user.books.find_by(id: params[:id])
-            erb :'books/edit'
+            if @book
+                erb :'books/edit'
+            else 
+                redirect '/books'
+            end
         else 
             redirect '/books'
         end  
@@ -66,8 +73,10 @@ class BooksController < ApplicationController
     end
     
     delete '/books/:id' do 
-        @book = Book.find_by(id: params[:id]) 
-        @book.delete 
+        @book = current_user.books.find_by(id: params[:id]) 
+        if @book
+            @book.delete 
+        end 
         redirect '/books'
     end 
 end 
