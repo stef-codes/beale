@@ -1,12 +1,8 @@
 class BooksController < ApplicationController
   get '/books' do 
-    if logged_in?
-      user = current_user
-      @books = user.books
-      erb :'books/index'
-    else 
-      redirect '/login' 
-    end 
+    redirect_not_logged_in
+    @books = current_user.books
+    erb :'books/index'
   end
 
 
@@ -19,8 +15,7 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    user = current_user
-    @book = user.books.find_or_create_by(params)
+    @book = current_user.books.find_or_create_by(params)
 
     if @book.save
       erb :'books/show'
